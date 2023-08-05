@@ -1,4 +1,4 @@
-name: Publish Docker image
+name: Build & Push on Master
 
 env:
   DOCKERHUB_USERNAME: martinbouillaud
@@ -38,4 +38,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: ${{env.DOCKERHUB_USERNAME}}/${{env.DOCKERHUB_IMAGE}}:latest

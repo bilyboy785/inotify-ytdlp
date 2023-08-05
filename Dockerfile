@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.18
 
 LABEL maintainer="Martin BLD contact@bouillaudmartin.fr"
 
@@ -7,7 +7,7 @@ ENV TERM=xterm-256color
 ENV PYTHONUNBUFFERED=1
 
 RUN true && \
-    echo "http://dl-cdn.alpinelinux.org/alpine/v3.17/community" >> /etc/apk/repositories && \
+    echo "http://dl-cdn.alpinelinux.org/alpine/v3.18/community" >> /etc/apk/repositories && \
     apk --update upgrade && \
     apk add --no-cache bash curl htop runit python3 py3-pip icu-libs ffmpeg build-base shadow && \
     python3 -m ensurepip && \
