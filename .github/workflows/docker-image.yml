@@ -40,4 +40,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: $DOCKERHUB_USERNAME/$DOCKERHUB_IMAGE:${{ steps.vars.outputs.tag }}, $DOCKERHUB_USERNAME/$DOCKERHUB_IMAGE:latest
+          tags: $DOCKERHUB_USERNAME/$DOCKERHUB_IMAGE:latest
