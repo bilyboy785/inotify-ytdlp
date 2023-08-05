@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ${{ DOCKERHUB_USERNAME }}/${{ DOCKERHUB_IMAGE }}
+          images: ${DOCKERHUB_USERNAME}/${{ DOCKERHUB_IMAGE }}
 
       - name: Build and push
         uses: docker/build-push-action@v4
@@ -40,6 +40,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: |
-            ${{ DOCKERHUB_USERNAME }}/${{ DOCKERHUB_IMAGE }}:${{ steps.vars.outputs.tag }}
-            ${{ DOCKERHUB_USERNAME }}/${{ DOCKERHUB_IMAGE }}:latest
+          tags: ${DOCKERHUB_USERNAME}/${{ DOCKERHUB_IMAGE }}:${{ steps.vars.outputs.tag }}, ${DOCKERHUB_USERNAME}/${{ DOCKERHUB_IMAGE }}:latest
