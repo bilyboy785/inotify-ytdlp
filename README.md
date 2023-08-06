@@ -1,1 +1,3 @@
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![Docker Pulls](https://badgen.net/docker/pulls/martinbouillaud/inotify-ytdlp?icon=docker&label=pulls)](https://hub.docker.com/r/martinbouillaud/inotify-ytdlp:latest)  [![Docker Image Size](https://img.shields.io/docker/image-size/martinbouillaud/inotify-ytdlp?sort=date)](https://hub.docker.com/r/martinbouillaud/inotify-ytdlp/) [![Github last-commit](https://img.shields.io/github/last-commit/bilyboy785/docker-inotify-ytdlp)](https://github.com/bilyboy785/docker-inotify-ytdlp) ![Build & Push](https://github.com/bilyboy785/docker-inotify-ytdlp/actions/workflows/build-push-master.yml/badge.svg)
+
 # inotify-ytdlp
