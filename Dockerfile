@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.18
 
 LABEL maintainer="Martin BLD contact@bouillaudmartin.fr"
 
