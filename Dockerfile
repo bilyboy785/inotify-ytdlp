@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED=1
 RUN true && \
     echo "http://dl-cdn.alpinelinux.org/alpine/v3.18/community" >> /etc/apk/repositories && \
     apk --update upgrade && \
-    apk add --no-cache bash curl htop runit python3 py3-pip icu-libs ffmpeg build-base shadow && \
+    apk add --no-cache bash curl doas runit python3 py3-pip icu-libs ffmpeg build-base shadow && \
     python3 -m ensurepip && \
     pip3 install --no-cache --upgrade pip setuptools pipx watchdog && \
     python3 -m pipx ensurepath && \
@@ -21,6 +21,9 @@ RUN true && \
     chown user-service:user-service /home/user-service && \
     mkdir -p /etc/run_once /etc/service && \
     chmod +x /root/.local/bin/yt-dlp
+
+RUN adduser --uid 99 --disabled-password --ingroup users --no-create-home private && \
+    echo 'permit private as root' > /etc/doas.d/doas.conf
 
 # Boilerplate startup code
 COPY ./boot.sh /sbin/boot.sh
