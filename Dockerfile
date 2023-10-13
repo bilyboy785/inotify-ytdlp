@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED=1
 RUN true && \
     echo "http://dl-cdn.alpinelinux.org/alpine/v3.18/community" >> /etc/apk/repositories && \
     apk --update upgrade && \
-    apk add --no-cache bash curl doas runit python3 py3-pip icu-libs rsync ffmpeg build-base shadow && \
+    apk add --no-cache bash mysql-client curl doas runit python3 py3-pip icu-libs rsync ffmpeg build-base shadow && \
     python3 -m ensurepip && \
     pip3 install --no-cache --upgrade pip setuptools pipx watchdog && \
     python3 -m pipx ensurepath && \
