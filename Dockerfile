@@ -1,4 +1,6 @@
-FROM alpine:3.18
+FROM martinbouillaud/base:3.18
+
+USER root
 
 LABEL maintainer="Martin BLD contact@bouillaudmartin.fr"
 
@@ -9,7 +11,7 @@ ENV PYTHONUNBUFFERED=1
 RUN true && \
     echo "http://dl-cdn.alpinelinux.org/alpine/v3.18/community" >> /etc/apk/repositories && \
     apk --update upgrade && \
-    apk add --no-cache bash mysql-client curl doas runit python3 py3-pip icu-libs rsync ffmpeg build-base shadow && \
+    apk add --no-cache bash mysql-client curl doas runit python3 py3-pip icu-libs rsync ffmpeg build-base shadow openssl jq && \
     python3 -m ensurepip && \
     pip3 install --no-cache --upgrade pip setuptools pipx watchdog && \
     python3 -m pipx ensurepath && \
@@ -22,8 +24,8 @@ RUN true && \
     mkdir -p /etc/run_once /etc/service && \
     chmod +x /root/.local/bin/yt-dlp
 
-RUN adduser --uid 99 --disabled-password --ingroup users --no-create-home private && \
-    echo 'permit private as root' > /etc/doas.d/doas.conf
+#RUN adduser --uid 99 --disabled-password --ingroup users --no-create-home private && \
+#    echo 'permit private as root' > /etc/doas.d/doas.conf
 
 # Boilerplate startup code
 COPY ./boot.sh /sbin/boot.sh
@@ -35,12 +37,12 @@ VOLUME ["/config", \
   "/dir11", "/dir12", "/dir13", "/dir14", "/dir15", "/dir16", "/dir17", "/dir18", "/dir19", "/dir20"]
 
 # Set the locale, to help Python and the user's applications deal with files that have non-ASCII characters
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
-ENV UMAP ""
-ENV GMAP ""
+ENV UMAP=""
+ENV GMAP=""
 
 COPY sample.conf monitor.py runas.sh /files/
 
@@ -51,3 +53,5 @@ RUN chmod a+rwX /files
 ADD 50_remap_ids.sh /etc/run_once/50_remap_ids
 ADD 60_create_monitors.sh /etc/run_once/60_create_monitors
 RUN chmod +x /etc/run_once/*
+
+USER floux
