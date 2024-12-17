@@ -54,4 +54,4 @@ ADD 50_remap_ids.sh /etc/run_once/50_remap_ids
 ADD 60_create_monitors.sh /etc/run_once/60_create_monitors
 RUN chmod +x /etc/run_once/*
 
-USER floux
+USER root
